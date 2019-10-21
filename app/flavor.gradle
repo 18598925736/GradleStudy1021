@@ -1,0 +1,31 @@
+android {
+
+    //定义多渠道配置
+    flavorDimensions "channel", "theme"  // 我要求有两种维度，一个是 渠道，一个是 主题
+    //渠道，我定义在channel.txt中，内容如下
+//    huawei
+//    xiaomi
+//    oppo
+//    vivo
+    file("./channel.txt").readLines().each {
+        channel ->
+            println(channel)
+            productFlavors.create(channel, {
+                dimension 'channel'
+                manifestPlaceholders = [channel: channel]
+            })
+    }
+
+//主题，我定义在theme.txt中，内容如下
+//    black
+//    white
+//    red
+    file("./theme.txt").readLines().each {
+        theme ->
+            println(theme)
+            productFlavors.create(theme, {
+                dimension 'theme'
+                manifestPlaceholders = [theme: theme]
+            })
+    }
+}

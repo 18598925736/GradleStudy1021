@@ -1,0 +1,4 @@
+huawei
+xiaomi
+oppo
+vivo
